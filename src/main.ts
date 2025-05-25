@@ -12,7 +12,7 @@ const websocketBaseUrl = import.meta.env.VITE_WEBSOCKET_URL || "ws://localhost:8
 const stunServerUrl = import.meta.env.VITE_STUN_SERVER_URL || "stun:stun.l.google.com:19302";
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    console.log("USE WEBSOCKER URL: ", websocketBaseUrl)
     const localVideo = document.getElementById('localVideo') as HTMLVideoElement;
     const remoteVideosContainer = document.getElementById('videos') as HTMLDivElement;
     const roomIdInput = document.getElementById('roomIdInput') as HTMLInputElement;
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 2. Koneksi WebSocket ke signaling server
             // Ganti localhost:8080 dengan alamat server Anda jika berbeda
-            ws = new WebSocket(`${websocketBaseUrl}/${currentRoomId}/${myPeerId}`);
+            ws = new WebSocket(`${websocketBaseUrl}/ws/${currentRoomId}/${myPeerId}`);
 
             ws.onopen = () => {
                 console.log('WebSocket connection established');
